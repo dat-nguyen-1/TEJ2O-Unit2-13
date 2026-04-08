@@ -11,6 +11,8 @@ const RED: NeoPixelColors = NeoPixelColors.Red
 
 // initialize neopixel instance
 const NEOPIXEL_STRIP = neopixel.create(DigitalPin.P16, 4, NeoPixelMode.RGB)
+NEOPIXEL_STRIP.clear()
+NEOPIXEL_STRIP.show()
 
 // initialize display
 basic.showIcon(IconNames.Yes)
@@ -24,9 +26,12 @@ input.onButtonPressed(Button.A, function() {
         neopixelCounter += 1
     }
 
+    NEOPIXEL_STRIP.show()
+
     // neopixel countdown
     while (neopixelCounter >= 0) {
         NEOPIXEL_STRIP.setPixelColor(neopixelCounter, BLACK)
+        NEOPIXEL_STRIP.show()
         neopixelCounter -= 1
 
         // wait 1 s
